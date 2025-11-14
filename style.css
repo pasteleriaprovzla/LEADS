@@ -1,0 +1,75 @@
+﻿body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 2em;
+}
+
+h1 {
+    color: #1a1a1a;
+    text-align: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+    vertical-align: middle; /* Centra verticalmente el contenido */
+}
+
+th {
+    background-color: #f9f9f9;
+    font-weight: 600;
+}
+
+/* Centramos el botón en la última celda */
+td:last-child {
+    text-align: center;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #fdfdfd;
+}
+
+tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* --- NUEVOS ESTILOS PARA EL BOTÓN --- */
+.whatsapp-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #25D366; /* Color de WhatsApp */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    background-color: #128C7E; /* Color más oscuro al pasar el mouse */
+}

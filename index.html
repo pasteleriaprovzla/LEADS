@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leads de Supabase</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 1. Cargar la librería de Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>📊 Mis Leads</h1>
+        <table id="leads-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <!-- NUEVA COLUMNA -->
+                    <th>Acción</th> 
+                </tr>
+            </thead>
+            <!-- Los datos se insertarán aquí con JavaScript -->
+            <tbody id="leads-table-body">
+                <!-- Actualizamos el colspan a 3 para que ocupe las 3 columnas -->
+                <tr>
+                    <td colspan="3">Cargando datos...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 2. Cargar tu script de JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
