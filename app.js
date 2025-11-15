@@ -1,4 +1,4 @@
-﻿// 1. Configuración del cliente de Supabase
+// 1. Configuración del cliente de Supabase
 const SUPABASE_URL = 'https://lzeulzoztkpljvqjdxak.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6ZXVsem96dGtwbGp2cWpkeGFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMxMzMwODIsImV4cCI6MjA3ODcwOTA4Mn0.y_6SZFMPiOBqzxa_jgrhBDMyfQbEELdwnqd0QKJjA6M';
 
@@ -31,14 +31,13 @@ async function fetchLeads() {
             // Recorremos los datos y creamos una fila (tr) por cada lead
             data.forEach(lead => {
                 
-                // --- LÓGICA DEL MENSAJE DE WHATSAPP ---
-
                 // Usamos `|| ''` para evitar errores si un campo está vacío
                 const nombreLead = lead.nombre || 'Interesado(a)'; 
                 const telefonoLead = (lead.telefono || '').replace(/[\s()-]/g, ''); // Limpia el teléfono
 
-                // 1. Definimos la plantilla del mensaje. Usamos plantillas literales (backticks ``)
-                //    para respetar los saltos de línea.
+                // --- LÓGICA DEL MENSAJE DE WHATSAPP (BOTÓN 1) ---
+
+                // 1. Definimos la plantilla del mensaje.
                 const mensajeTemplate = `*Lo prometido es deuda..*
 
 ¡Hola ${nombreLead}! 👋 ¡Soy Arnel Ospino, encantado de saludarte!
@@ -61,17 +60,32 @@ Tienes alguna experiencia en la elaboración de postres en vasos?`;
                 // 3. Creamos el enlace final de WhatsApp
                 const whatsappUrl = `https://wa.me/${telefonoLead}?text=${mensajeCodificado}`;
 
+                
+                // --- NUEVA LÓGICA DEL MENSAJE DE SEGUIMIENTO (BOTÓN 2) ---
+
+                // 1. Definimos la plantilla del mensaje de seguimiento
+                const mensajeTemplateSeguimiento = `Hola ${nombreLead} 👋 pudo descargar la guia? Que le parecio? si tiene algun problema con el el link puedes decirme estoy aqui para ayudarle 😁 o alguna otra pregunta hagamelo saber 😉`;
+
+                // 2. Codificamos el mensaje de seguimiento
+                const mensajeCodificadoSeguimiento = encodeURIComponent(mensajeTemplateSeguimiento);
+
+                // 3. Creamos el enlace final de WhatsApp (BOTÓN 2)
+                const whatsappUrlSeguimiento = `https://wa.me/${telefonoLead}?text=${mensajeCodificadoSeguimiento}`;
+
                 // --- FIN DE LA LÓGICA ---
 
 
-                // Creamos la nueva fila con 3 celdas
+                // Creamos la nueva fila con 3 celdas (actualizamos la última celda)
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${lead.nombre || 'N/A'}</td>
                     <td>${lead.telefono || 'N/A'}</td>
                     <td>
                         <a href="${whatsappUrl}" class="whatsapp-btn" target="_blank">
-                            Enviar WhatsApp
+                            Enviar Guía
+                        </a>
+                        <a href="${whatsappUrlSeguimiento}" class="whatsapp-btn-followup" target="_blank">
+                            Seguimiento
                         </a>
                     </td>
                 `;
