@@ -43,9 +43,9 @@ async function fetchLeads() {
 
 ¡Hola ${nombreLead}! 👋 ¡Soy Arnel Ospino, encantado de saludarte!
 
-(Te has registrado en un formulario en Facebook y has dejado tu número de WhatsApp para enviarte una guía gratuita)
+_(Te has registrado en un formulario en Facebook y has dejado tu número de WhatsApp para enviarte una guía gratuita)_
 
-¡Felicidades por tomar lación de emprender! 🥳 Tal como te prometí, aquí tienes tu Guía Rápida para Iniciar tu Negocio de Postres en Vasos.  
+¡Felicidades por tomar la acción de emprender! 🥳 Tal como te prometí, aquí tienes tu Guía Rápida para Iniciar tu Negocio de Postres en Vasos.  
 
 https://drive.google.com/file/d/1n2liWB2Vcqz1BTMUbtf4JUd9rQ8dpjO-/view?usp=drivesdk
 
