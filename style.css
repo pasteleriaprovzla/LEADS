@@ -1,4 +1,4 @@
-﻿body {
+body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: #f4f7f6;
     color: #333;
@@ -44,7 +44,7 @@ th {
     font-weight: 600;
 }
 
-/* Centramos el botón en la última celda */
+/* Centramos los botones en la última celda */
 td:last-child {
     text-align: center;
 }
@@ -57,7 +57,7 @@ tbody tr:hover {
     background-color: #f0f0f0;
 }
 
-/* --- NUEVOS ESTILOS PARA EL BOTÓN --- */
+/* --- ESTILOS PARA LOS BOTONES --- */
 .whatsapp-btn {
     display: inline-block;
     padding: 8px 12px;
@@ -72,4 +72,22 @@ tbody tr:hover {
 
 .whatsapp-btn:hover {
     background-color: #128C7E; /* Color más oscuro al pasar el mouse */
+}
+
+/* --- NUEVO BOTÓN DE SEGUIMIENTO --- */
+.whatsapp-btn-followup {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #007bff; /* Color azul para diferenciar */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-left: 5px; /* Espacio para separarlo del primer botón */
+}
+
+.whatsapp-btn-followup:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
 }
