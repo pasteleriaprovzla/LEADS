@@ -12,76 +12,77 @@ const tableBody = document.getElementById('leads-table-body');
 // 4. Función asíncrona para obtener y mostrar los datos
 async function fetchLeads() {
     try {
-        // Consultamos la tabla 'leads' y seleccionamos 'nombre' y 'telefono'
         const { data, error } = await _supabase
             .from('leads')
             .select('nombre, telefono');
 
         if (error) {
             console.error('Error al obtener los datos:', error);
-            // Actualizamos colspan a 3
             tableBody.innerHTML = `<tr><td colspan="3">Error: ${error.message}</td></tr>`;
             return;
         }
 
         if (data && data.length > 0) {
-            // Limpiamos el mensaje de "Cargando..."
             tableBody.innerHTML = '';
 
-            // Recorremos los datos y creamos una fila (tr) por cada lead
             data.forEach(lead => {
-                
-                // Usamos `|| ''` para evitar errores si un campo está vacío
-                const nombreLead = lead.nombre || 'Interesado(a)'; 
-                const telefonoLead = (lead.telefono || '').replace(/[\s()-]/g, ''); // Limpia el teléfono
+                const nombreLead = lead.nombre || 'Interesado(a)';
+                const telefonoLead = (lead.telefono || '').replace(/[\s()-]/g, '');
 
-                // --- LÓGICA DEL MENSAJE DE WHATSAPP (BOTÓN 1) ---
+                // ========= MENSAJE OPTIMIZADO DE ENVÍO =========
 
-                // 1. Definimos la plantilla del mensaje.
-                const mensajeTemplate = `*Lo prometido es deuda..*
+                const mensajeTemplate = `*Lo prometido es deuda…*
 
-¡Hola ${nombreLead}! 👋😊✨
-( _Has dejado tus datos de contacto en un formulario en facebook o Instagram ya que es necesario para enviarte la guía que te ayudará a crear tus postres en vasos_ )
+¡Hola ${nombreLead}! 👋😄  
+Vi que dejaste tus datos para recibir la *Guía Rápida para iniciar tu negocio de postres en vasos*, ¡excelente decisión!
 
-Lo mejor es que no necesitas horno, ni batidora, ni fórmulas difíciles.
-Es un negocio ligero: batir, armar y refrigerar.
-Así de simple.
+Esta guía gratuita está pensada para personas *sin experiencia*, porque:
+• No necesitas horno 🍰  
+• No necesitas batidora ⚡  
+• No requiere fórmulas complicadas  
+• Solo *batir, armar y refrigerar*  
+• Puedes comenzar desde casa con muy poco capital  
+• En 7 días ya puedes tener tus primeros postres listos para vender 💛
 
-Y la guía gratuita te va a ayudar a crear tus primeros postres y empezar a venderlos en pocos días. *Es una gran herramienta si realmente quieres intentarlo y darle un cambio bonito a tu economía* 🙌✨
+Esta guía te muestra exactamente:
+✔ Cómo crear tus *primeros 2 postres profesionales*  
+✔ Cómo iniciar con *materiales económicos*  
+✔ Cómo preparar tu *primer mini menú*  
+✔ Cómo dar tus *primeros pasos de venta*  
+✔ Cómo hacer postres que de verdad se venden rápido
 
-Antes de enviártela quiero hacerte una preguntita importante:
-*¿Te comprometes a seguir los pasos de la guía tal como están explicados?*
-Es un proceso sencillo, pero requiere que pongas un poquito de tu parte 💛
+Es un recurso muy valioso si quieres empezar un negocio real desde cero con algo simple y rentable.
 
-Y otra cosa amiga:
-*¿Estás consciente de que necesitarás comprar algunos ingredientes básicos para poder hacer los postres del reto de 7 días?*
+Antes de enviártela solo necesito hacerte dos preguntitas importantes:
 
-No es una inversión grande, pero sí es necesaria para que puedas poner en práctica todo.
+1️⃣ *¿Te comprometes a seguir los pasos tal como vienen explicados en la guía?*  
+2️⃣ *¿Estás consciente de que necesitarás comprar ingredientes muy básicos para poder completar el reto de 7 días?*
 
-_Cuando me confirmes eso, te envío la guía con mucho gusto_ ❤️✨`;
+Cuando me confirmes esto, te envío la guía enseguida ❤️✨`;
 
-                // 2. Codificamos el mensaje para que sea seguro en una URL
                 const mensajeCodificado = encodeURIComponent(mensajeTemplate);
-
-                // 3. Creamos el enlace final de WhatsApp
                 const whatsappUrl = `https://wa.me/${telefonoLead}?text=${mensajeCodificado}`;
 
-                
-                // --- NUEVA LÓGICA DEL MENSAJE DE SEGUIMIENTO (BOTÓN 2) ---
+                // ========= MENSAJE DE SEGUIMIENTO OPTIMIZADO =========
 
-                // 1. Definimos la plantilla del mensaje de seguimiento
-                const mensajeTemplateSeguimiento = `Hola ${nombreLead} 👋 pudo descargar la guia? Que le parecio? si tiene algun problema con el el link puedes decirme estoy aqui para ayudarle 😁 o alguna otra pregunta hagamelo saber 😉`;
+                const mensajeTemplateSeguimiento = `Hola ${nombreLead} 👋  
+Solo pasaba para asegurarme de que hayas podido ver mi mensaje anterior 😊
 
-                // 2. Codificamos el mensaje de seguimiento
+La guía gratuita que te voy a enviar es *muy valiosa* si realmente quieres empezar a crear y vender postres en vasos, incluso si nunca antes has cocinado algo para vender.
+
+Te enseña a:
+✔ Preparar tus primeros postres sin experiencia  
+✔ Empezar con una inversión mínima  
+✔ Crear productos que la gente compra rápido  
+✔ Tener resultados en pocos días 💛  
+
+¿Sigues interesado(a) en comenzar?  
+Si quieres, te explico cómo funciona el reto de 7 días para que te prepares mejor.`;
+
                 const mensajeCodificadoSeguimiento = encodeURIComponent(mensajeTemplateSeguimiento);
-
-                // 3. Creamos el enlace final de WhatsApp (BOTÓN 2)
                 const whatsappUrlSeguimiento = `https://wa.me/${telefonoLead}?text=${mensajeCodificadoSeguimiento}`;
 
-                // --- FIN DE LA LÓGICA ---
-
-
-                // Creamos la nueva fila con 3 celdas (actualizamos la última celda)
+                // ========= INSERTAR FILA =========
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${lead.nombre || 'N/A'}</td>
@@ -99,7 +100,6 @@ _Cuando me confirmes eso, te envío la guía con mucho gusto_ ❤️✨`;
             });
 
         } else {
-            // No se encontraron datos (actualizamos colspan a 3)
             tableBody.innerHTML = '<tr><td colspan="3">No se encontraron leads.</td></tr>';
         }
 
@@ -111,4 +111,3 @@ _Cuando me confirmes eso, te envío la guía con mucho gusto_ ❤️✨`;
 
 // 5. Llamar a la función cuando se cargue la página
 fetchLeads();
-
