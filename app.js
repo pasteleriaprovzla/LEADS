@@ -40,19 +40,25 @@ async function fetchLeads() {
                 // 1. Definimos la plantilla del mensaje.
                 const mensajeTemplate = `*Lo prometido es deuda..*
 
-¡Hola ${nombreLead}! 👋 ¡Soy Arnel Ospino, encantado de saludarte!
+¡Hola ${nombreLead}! 👋😊✨
+( _Has dejado tus datos de contacto en un formulario en facebook o Instagram ya que es necesario para enviarte la guía que te ayudará a crear tus postres en vasos_ )
 
-_(Te has registrado en un formulario en Facebook y has dejado tu número de WhatsApp para enviarte una guía gratuita)_
+Lo mejor es que no necesitas horno, ni batidora, ni fórmulas difíciles.
+Es un negocio ligero: batir, armar y refrigerar.
+Así de simple.
 
-¡Felicidades por tomar la acción de emprender! 🥳 Tal como te prometí, aquí tienes tu Guía Rápida para Iniciar tu Negocio de Postres en Vasos.  
+Y la guía gratuita te va a ayudar a crear tus primeros postres y empezar a venderlos en pocos días. *Es una gran herramienta si realmente quieres intentarlo y darle un cambio bonito a tu economía* 🙌✨
 
-https://drive.google.com/file/d/1n2liWB2Vcqz1BTMUbtf4JUd9rQ8dpjO-/view?usp=drivesdk
+Antes de enviártela quiero hacerte una preguntita importante:
+*¿Te comprometes a seguir los pasos de la guía tal como están explicados?*
+Es un proceso sencillo, pero requiere que pongas un poquito de tu parte 💛
 
-Esta guía es 100% gratuita y te dará el plan exacto de 7 días para generar tus primeros ingresos desde casa.  
+Y otra cosa amiga:
+*¿Estás consciente de que necesitarás comprar algunos ingredientes básicos para poder hacer los postres del reto de 7 días?*
 
-Mi objetivo es acompañarte en este proceso.  
+No es una inversión grande, pero sí es necesaria para que puedas poner en práctica todo.
 
-Tienes alguna experiencia en la elaboración de postres en vasos?`;
+_Cuando me confirmes eso, te envío la guía con mucho gusto_ ❤️✨`;
 
                 // 2. Codificamos el mensaje para que sea seguro en una URL
                 const mensajeCodificado = encodeURIComponent(mensajeTemplate);
@@ -105,3 +111,4 @@ Tienes alguna experiencia en la elaboración de postres en vasos?`;
 
 // 5. Llamar a la función cuando se cargue la página
 fetchLeads();
+
